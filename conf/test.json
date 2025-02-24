@@ -1,0 +1,38 @@
+{
+    "workload": "/home/wyk/ssd/MetaDedup/traces/workspace/chunkSize_32K/homes_final_trace_00.txt",
+    "config": {
+        "primaryDeviceName": "/home/wyk/AFA/PrimaryDevice",
+        "cacheDeviceName": "/mnt/pmem1/PMDevice",
+        "primaryDeviceSize": 1099511627776,
+        "cacheDeviceSize": 4294967296,
+        "workingSetSize": 19638419456,
+
+        "chunkSize": 32768,
+        "subchunkSize": 8192,
+
+        "nSlotsPerLbaBucket": 128,
+        "nSlotsPerFpBucket": 128,
+        "nBitsPerLbaSignature": 16,
+        "nBitsPerFpSignature": 16,
+        "lbaAmplifier": 4,
+
+        "syntheticCompression": 1,
+        "compactCachePolicy": 1,
+        "sketchBasedReferenceCounter": 1,
+
+        "multiThreading": 0,
+        "nThreads": 1,
+
+        "cacheMode": "WriteThrough",
+
+        "traceReplay": 1,
+        "fakeIO": 0,
+        "directIO": 0,
+
+        "SHA512": 1,
+        "ZLIB": 1,
+        
+        "SelectiveCompression": 1,
+        "SelectiveDeduplication": 1
+    }
+}

@@ -1,0 +1,49 @@
+total MBs: 315324
+elapsed: 1378501213 us
+Throughput: 239.856 MBytes/s
+Write: 
+    Num total write: 9236147 times
+    Num write dup content: 1795556
+    Num write not dup: 7440591
+        Num write not dup caused by ca not hit: 7434973
+        Num write not dup caused by ca not match: 5618
+
+Read: 
+    Num total read: 854229 times
+    Num read hit: 365368
+    Num read not hit: 488861
+        Num read not hit caused by lba not hit: 483586
+        Num read not hit caused by ca not hit: 4030
+        Num read not hit caused by lba not match: 1245
+            Num read not hit dup content: 5807
+            Num read not hit not dup: 483054
+                Num read not hit not dup caused by ca not hit: 482240
+                Num read not hit not dup caused by ca not match: 814
+
+IO statistics: 
+    Num bytes metadata written to ssd: 4137916928
+    Num bytes metadata read from ssd: 1113296896
+    Num total bytes data should written to ssd: 16018997248
+    Num bytes data written to ssd: 195086891520
+    Num bytes data read from ssd: 5915447296
+    Num bytes data written to pm: 0
+    Num bytes data read from pm: 0
+    Num bytes written to hdd: 302650064896
+    Num bytes read from hdd: 16018997248
+
+Time Elapsed: 
+    Time elpased for computeFingerprint: 78006092
+    Time elpased for compression: 35589254
+    Time elpased for decompression: 2778540
+    Time elpased for lookup: 4429886
+    Time elpased for dedup: 76726115
+    Time elpased for update_index: 852130375
+    Time elpased for io_ssd: 83102135
+    Time elpased for io_hdd: 96932823
+    Time elpased for io_pm: 0
+
+Overall Stats: 
+    Hit ratio: 42.77%
+    Dup ratio: 18.52%
+    Dup ratio (not include read): 19.44%
+VM: 552700.00; RSS: 513916.00

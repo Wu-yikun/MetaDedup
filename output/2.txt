@@ -1,0 +1,55 @@
+Replay finished, statistics: 
+total MBs: 315324
+elapsed: 1412575591 us
+Throughput: 234.07 MBytes/s
+Write: 
+    Num total write: 9236147 times
+    Num write dup content: 1389467
+    Num write not dup: 7846680
+        Num write not dup caused by ca not hit: 7846679
+        Num write not dup caused by ca not match: 1
+
+Read: 
+    Num total read: 854229 times
+    Num read hit: 291008
+    Num read not hit: 563221
+        Num read not hit caused by lba not hit: 485380
+        Num read not hit caused by ca not hit: 75666
+        Num read not hit caused by lba not match: 2175
+            Num read not hit dup content: 755
+            Num read not hit not dup: 562466
+                Num read not hit not dup caused by ca not hit: 562453
+                Num read not hit not dup caused by ca not match: 13
+
+IO statistics: 
+    Num bytes metadata written to ssd: 0
+    Num bytes metadata read from ssd: 0
+    Num bytes data written to ssd: 302650064896
+    Num bytes data read from ssd: 18455625728
+    Num bytes metadata written to pm: 4318337024
+    Num bytes metadata read from pm: 861910528
+    Num bytes data written to pm: 184963749888
+    Num bytes data read from pm: 9454441984
+
+Time Elapsed: 
+    Time elpased for computeFingerprint: 80048588
+    Time elpased for compression: 38626972
+    Time elpased for decompression: 2344120
+    Time elpased for lookup: 4611567
+    Time elpased for dedup: 18981197
+    Time elpased for update_index: 837598625
+    Time elpased for io_ssd: 177622260
+    Time elpased for io_pm: 99476554
+    Time elpased for update_index(FPBucket_update): 685939930
+    Time elpased for update_index(computeCachedataLocation): 549071
+    Time elpased for update_index(computeMetadataLocation): 268437
+    Time elpased for FPBucket_update(update_index1): 562262386
+    Time elpased for FPBucket_update(update_index2): 60977460
+    Time elpased for FPBucket_update(update_index3): 21935885
+    Time elpased for debug: 0
+
+Overall Stats: 
+    Hit ratio: 34.07%
+    Dup ratio: 14.19%
+    Dup ratio (not include read): 15.04%
+VM: 5029708.00; RSS: 1003456.00
