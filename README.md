@@ -27,3 +27,10 @@ cd isa-l_crypto
 make && make install
 cd ..
 ```
+
+### compile
+
+```
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j$(nproc)
+```
