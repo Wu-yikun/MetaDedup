@@ -68,7 +68,7 @@ void MetadataModule::dedup(Chunk &chunk) {
   }
 }
 
-// 判断数据块是否可以直接从缓存 SSD 中获取
+// 判断数据块是否可以直接从缓存 SSD 中获取: lbaIndex_ 命中, 且 fpIndex_ 命中, 才能去缓存 SSD 中获取完整的 FP 来验证
 void MetadataModule::lookup(Chunk &chunk) {
   // Obtain LBA bucket lock
   chunk.lbaBucketLock_ = std::move(lbaIndex_->lock(chunk.lbaHash_));
@@ -119,6 +119,10 @@ void MetadataModule::update(Chunk &chunk) {
   // Cases when an on-ssd metadata update is needed
   // 1. DUP_CONTENT (update lba lists in the on-ssd metadata if the lba is not in the list)
   // 2. NOT_DUP (write a new metadata and a new cached data)
+  /*
+    如果数据块是新的（未命中），需要将其指纹和 LBA 信息插入到索引中
+    如果数据块是重复的（命中），需要提升其在索引中的优先级（例如 LRU 策略）
+  */
   if ((chunk.dedupResult_ == DUP_CONTENT && chunk.verficationResult_ != BOTH_LBA_AND_FP_VALID) ||
       chunk.dedupResult_ == NOT_DUP) {
     metaVerification_->update(chunk);

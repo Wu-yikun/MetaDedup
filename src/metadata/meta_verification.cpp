@@ -64,7 +64,6 @@ void MetaVerification::update(Chunk &chunk) {
       metadata.LBAs_[metadata.numLBAs_] = chunk.addr_;
       metadata.numLBAs_++;
     }
-
     IOModule::getInstance().write(CACHE_DEVICE, metadataLocation, &chunk.metadata_, 512);
   } else if (chunk.dedupResult_ == NOT_DUP) {
     // The data is not duplicate

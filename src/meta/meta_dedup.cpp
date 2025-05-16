@@ -58,9 +58,9 @@ void Meta::internalRead(Chunk &chunk) {
   chunk.compressedBuf_ = compressedBuf;
 
   DeduplicationModule::lookup(chunk);
-  {
-    Stats::getInstance().addReadLookupStatistics(chunk);
-  }
+  // {
+  //   Stats::getInstance().addReadLookupStatistics(chunk);
+  // }
   ManageModule::getInstance().read(chunk);
   if (chunk.lookupResult_ == HIT) {
     CompressionModule::decompress(chunk);
@@ -81,20 +81,17 @@ void Meta::internalRead(Chunk &chunk) {
 }
 
 void Meta::internalWrite(Chunk &chunk) {
-  chunk.lookupResult_ = LOOKUP_UNKNOWN;
+  // chunk.lookupResult_ = LOOKUP_UNKNOWN;
   alignas(512) uint8_t tempBuf[Config::getInstance().getChunkSize()];
   chunk.compressedBuf_ = tempBuf;
-
-  {
-    chunk.computeFingerprint();
-    DeduplicationModule::dedup(chunk);
-    if (chunk.dedupResult_ == NOT_DUP) {
-      CompressionModule::compress(chunk);
-    }
-    ManageModule::getInstance().updateMetadata(chunk);
-    ManageModule::getInstance().write(chunk);
-    Stats::getInstance().add_write_stat(chunk);
+  chunk.computeFingerprint();
+  DeduplicationModule::dedup(chunk);
+  if (chunk.dedupResult_ == NOT_DUP) {  // 唯一块需要压缩
+    CompressionModule::compress(chunk);
   }
+  ManageModule::getInstance().updateMetadata(chunk);
+  ManageModule::getInstance().write(chunk);
+  Stats::getInstance().add_write_stat(chunk);
 }
 
 }  // namespace cache

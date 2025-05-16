@@ -1,5 +1,5 @@
 {
-    "workload": "/home/wyk/ssd/MetaDedup/traces/workspace/chunkSize_32K/homes_final_trace_00.txt",
+    "workload": "/home/wyk/ssd/MetaDedup/traces/workspace/chunkSize_32K/homes_final_trace_00_test.txt",
     "config": {
         "primaryDeviceName": "/home/wyk/AFA/PrimaryDevice",
         "cacheDeviceName": "/mnt/pmem1/PMDevice",
